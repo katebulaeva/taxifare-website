@@ -4,24 +4,34 @@ import streamlit as st
 # TaxiFareModel front
 '''
 
-st.markdown('''
-Remember that there are several ways to output content into your web page...
+# st.markdown('''
+# Remember that there are several ways to output content into your web page...
 
-Either as with the title by just creating a string (or an f-string). Or as with this paragraph using the `st.` functions
-''')
+# Either as with the title by just creating a string (or an f-string). Or as with this paragraph using the `st.` functions
+# ''')
 
-'''
-## Here we would like to add some controllers in order to ask the user to select the parameters of the ride
 
-1. Let's ask for:
-- date and time
-- pickup longitude
-- pickup latitude
-- dropoff longitude
-- dropoff latitude
-- passenger count
-'''
 
+# st.write('Let\'s ask for:')
+# date_time = st.date_input('Date', help='Select the date and time')
+# pickup_longitude = st.number_input('Pickup Longitude', help='Enter the pickup longitude')
+# pickup_latitude = st.number_input('Pickup Latitude', help='Enter the pickup latitude')
+# dropoff_longitude = st.number_input('Dropoff Longitude', help='Enter the dropoff longitude')
+# dropoff_latitude = st.number_input('Dropoff Latitude', help='Enter the dropoff latitude')
+# passenger_count = st.number_input('Passenger Count', help='Enter the number of passengers')
+
+col1, col2 = st.columns(2)
+
+with col1:
+    date_time = st.date_input('Date', key='date_input', help='Select the date and time')
+    passenger_count = st.number_input('Passenger Count', min_value=1, max_value=10, step=1, value=1, format="%d", help='Enter the number of passengers')
+
+
+with col2:
+    pickup_longitude = st.number_input('Pickup Longitude', help='Enter the pickup longitude')
+    pickup_latitude = st.number_input('Pickup Latitude', help='Enter the pickup latitude')
+    dropoff_longitude = st.number_input('Dropoff Longitude', help='Enter the dropoff longitude')
+    dropoff_latitude = st.number_input('Dropoff Latitude', help='Enter the dropoff latitude')
 '''
 ## Once we have these, let's call our API in order to retrieve a prediction
 
