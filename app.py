@@ -108,30 +108,33 @@ style = "<style>h2 {text-align: bottom;}</style>"
 st.markdown(style, unsafe_allow_html=True)
 
 # creates the container for page title
-#dash_1 = st.container()
+dash_1 = st.container()
 
-#with dash_1:
-    # st.write("")
-    # st.markdown("""
-    # <style>
-    # .custom-button {
-    # background-color: #4CAF50;
-    # color: white;
-    # padding: 14px 20px;
-    # margin: 8px 0;
-    # border: none;
-    # cursor: pointer;
-    # width: 100%;
-    # }
-    # .custom-button:hover {
-    # opacity: 0.8;
-    # }
-    # </style>
-    # <button class="custom-button">Custom Button</button>
-    # """, unsafe_allow_html=True)
+with dash_1:
+    st.write("")
+    st.markdown("""
+    <style>
+    .custom-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    }
+    .custom-button:hover {
+    opacity: 0.8;
+    }
+    </style>
+    <button class="custom-button">Custom Button</button>
+    """, unsafe_allow_html=True)
+
+if st.button('Нажмите меня'):
+    st.write('Кнопка была нажата!')
 
 if st.button('Predict'):
-    #st.markdown("<h2 style='text-align: center;'>PREDICTING</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center;'>PREDICTING</h2>", unsafe_allow_html=True)
     query = '&'.join([f"{key}={value}" for key, value in params.items()])
     url = f"{url0}?{query}"
     #st.write('Кнопка была нажата!')
@@ -153,7 +156,7 @@ if st.button('Predict'):
             st.write("Failed to fetch prediction. Please check the API endpoint and parameters.")
     except requests.RequestException as e:
         st.write(f"Error: {e}")
-#st.button()
+st.button()
 
 
 
