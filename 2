@@ -1,0 +1,25 @@
+import requests
+from datetime import datetime
+
+
+params = {
+#'pickup_datetime': datetime.strptime('24/11/2023', '%d/%m/%Y')2013-07-06 17:18:00,
+
+'pickup_datetime': '2013-07-06 17:18:00',
+'passenger_count': 2,
+'pickup_longitude': 40.747,
+'pickup_latitude': -73.989,
+'dropoff_longitude': 40.802,
+'dropoff_latitude': -73.956
+}
+url0 = 'https://taxifare.lewagon.ai/predict'
+
+
+query = '&'.join([f"{key}={value}" for key, value in params.items()])
+url = f"{url0}?{query}"
+
+response = requests.get(url)
+response = response.json
+print(url)
+
+print(response)
