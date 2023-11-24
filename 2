@@ -1,5 +1,6 @@
 import requests
-from datetime import datetime
+import pandas as pd
+import numpy as np
 
 
 params = {
@@ -18,8 +19,15 @@ url0 = 'https://taxifare.lewagon.ai/predict'
 query = '&'.join([f"{key}={value}" for key, value in params.items()])
 url = f"{url0}?{query}"
 
-response = requests.get(url)
-response = response.json
-print(url)
+# response = requests.get(url)
+# response = response.json
+# print(url)
+#40.714400, -73.856651
+# print(response)
+pickup_longitude = -73.989
+pickup_latitude = 40.747
+dropoff_longitude = -73.956
+dropoff_latitude = 40.802
 
-print(response)
+df = pd.DataFrame(np.array([[pickup_latitude,pickup_longitude], [dropoff_latitude,dropoff_longitude]]),columns=['lat', 'lon'])
+print(df)
